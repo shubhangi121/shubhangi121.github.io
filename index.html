@@ -1,0 +1,1152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shubhangi Shreya — Product & Strategy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+:root {
+  --paper: #fdfcf9;
+  --ink: #1e1c18;
+  --ink-mid: #4a4640;
+  --ink-soft: #8a8278;
+  --sage: #5a7a5e;
+  --sage-light: #c8d9c9;
+  --sage-pale: #edf2ed;
+  --blush: #d4a0a0;
+  --blush-light: #ead0d0;
+  --blush-pale: #f8efef;
+  --rule: #e0dbd2;
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+/* ── NAV ── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0;
+  z-index: 100;
+  padding: 2rem 4rem;
+  display: flex; align-items: center; justify-content: space-between;
+  transition: padding 0.4s, background 0.4s, border-color 0.4s;
+  border-bottom: 1px solid transparent;
+}
+nav.stuck {
+  padding: 1.25rem 4rem;
+  background: rgba(253,252,249,0.94);
+  backdrop-filter: blur(16px);
+  border-color: var(--rule);
+}
+.nav-mark {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 1.2rem;
+  color: var(--ink);
+  text-decoration: none;
+  letter-spacing: 0.02em;
+}
+.nav-links {
+  display: flex; gap: 2.5rem; list-style: none;
+}
+.nav-links a {
+  font-size: 0.75rem;
+  font-weight: 400;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--ink-soft);
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--sage); }
+.nav-resume {
+  font-size: 0.75rem;
+  font-weight: 400;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--sage);
+  border-bottom: 1px solid var(--sage-light);
+  padding-bottom: 2px;
+  transition: border-color 0.2s;
+}
+.nav-resume:hover { border-color: var(--sage); }
+
+/* ── HERO ── */
+.hero {
+  min-height: 100vh;
+  display: flex; flex-direction: column;
+  justify-content: flex-end;
+  padding: 0 4rem 6rem;
+  position: relative;
+}
+.hero-ambient {
+  position: absolute; top: 0; right: 0;
+  width: 55vw; height: 100vh;
+  background: radial-gradient(ellipse at 70% 30%, #edf2ed 0%, transparent 65%),
+              radial-gradient(ellipse at 30% 80%, #f8efef 0%, transparent 55%);
+  pointer-events: none;
+}
+.hero-label {
+  font-size: 0.72rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--sage);
+  margin-bottom: 2rem;
+  opacity: 0;
+  animation: rise 1s 0.3s forwards;
+}
+.hero-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(5rem, 10vw, 9.5rem);
+  font-weight: 300;
+  line-height: 0.9;
+  letter-spacing: -0.02em;
+  margin-bottom: 3rem;
+  opacity: 0;
+  animation: rise 1s 0.5s forwards;
+}
+.hero-name em {
+  font-style: italic;
+  color: var(--blush);
+  display: block;
+}
+.hero-bottom {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 3rem;
+  padding-top: 3rem;
+  border-top: 1px dashed var(--rule);
+  opacity: 0;
+  animation: rise 1s 0.8s forwards;
+}
+.hero-stat {}
+.hero-stat-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.8rem;
+  font-weight: 300;
+  line-height: 1;
+  color: var(--ink);
+}
+.hero-stat-num sup {
+  font-size: 1.2rem;
+  vertical-align: super;
+  color: var(--sage);
+}
+.hero-stat-label {
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin-top: 0.4rem;
+}
+.hero-desc {
+  grid-column: span 1;
+  font-size: 0.95rem;
+  color: var(--ink-mid);
+  line-height: 1.8;
+  display: flex; align-items: flex-end;
+}
+.hero-scroll {
+  display: flex; flex-direction: column; align-items: flex-end; justify-content: flex-end; gap: 0.75rem;
+}
+.hero-scroll span {
+  font-size: 0.65rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  writing-mode: vertical-rl;
+}
+.scroll-line {
+  width: 1px; height: 60px;
+  background: linear-gradient(to bottom, var(--rule), transparent);
+}
+
+/* ── SECTION SHELL ── */
+.section {
+  padding: 8rem 4rem;
+  border-bottom: 1px dashed var(--rule);
+}
+.section-head {
+  display: grid;
+  grid-template-columns: 160px 1fr;
+  gap: 4rem;
+  margin-bottom: 5rem;
+}
+.section-index {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 1rem;
+  color: var(--ink-soft);
+  padding-top: 0.6rem;
+}
+.section-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2.4rem, 4vw, 3.6rem);
+  font-weight: 300;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+}
+.section-title em { font-style: italic; color: var(--blush); }
+
+/* ── ABOUT ── */
+.about-body {
+  display: grid;
+  grid-template-columns: 160px 1fr 1fr;
+  gap: 4rem;
+}
+.about-body .spacer {}
+.about-intro p {
+  font-size: 1.05rem;
+  line-height: 1.9;
+  color: var(--ink-mid);
+  margin-bottom: 1.5rem;
+}
+.about-intro p strong { color: var(--ink); font-weight: 500; }
+.about-values { padding-top: 0.3rem; }
+.about-values h3 {
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--sage);
+  margin-bottom: 1.5rem;
+}
+.value-item {
+  padding: 1.25rem 0;
+  border-bottom: 1px dashed var(--rule);
+}
+.value-item:first-of-type { border-top: 1px dashed var(--rule); }
+.value-item h4 {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 1.05rem;
+  font-weight: 400;
+  color: var(--ink);
+  margin-bottom: 0.3rem;
+}
+.value-item p {
+  font-size: 0.82rem;
+  color: var(--ink-soft);
+  line-height: 1.6;
+}
+
+/* ── WORK ── */
+.work-list {
+  display: grid;
+  grid-template-columns: 160px 1fr;
+  gap: 0;
+}
+.work-spacer {}
+.work-items { }
+.work-item {
+  padding: 3.5rem 0;
+  border-bottom: 1px dashed var(--rule);
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 4rem;
+  align-items: start;
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.7s, transform 0.7s;
+}
+.work-item:first-child { border-top: 1px dashed var(--rule); }
+.work-item.vis { opacity: 1; transform: translateY(0); }
+.work-meta {}
+.work-co {
+  font-size: 0.68rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--sage);
+  margin-bottom: 0.75rem;
+}
+.work-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.9rem;
+  font-weight: 400;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
+.work-desc {
+  font-size: 0.88rem;
+  line-height: 1.8;
+  color: var(--ink-mid);
+  max-width: 520px;
+  margin-bottom: 1.25rem;
+}
+.work-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.tag {
+  font-size: 0.67rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.3rem 0.8rem;
+  border: 1px solid var(--rule);
+  color: var(--ink-soft);
+  border-radius: 40px;
+}
+.work-stats {
+  display: flex; flex-direction: column; gap: 1.5rem;
+  text-align: right; padding-top: 0.4rem; min-width: 110px;
+}
+.work-stat-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2rem;
+  font-weight: 300;
+  color: var(--blush);
+  line-height: 1;
+}
+.work-stat-label {
+  font-size: 0.67rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin-top: 0.2rem;
+}
+
+/* ── PHILOSOPHY ── */
+.phil-body {
+  display: grid;
+  grid-template-columns: 160px 1fr;
+  gap: 4rem;
+}
+.phil-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 3rem 4rem;
+}
+.phil-card {
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 0.6s, transform 0.6s;
+}
+.phil-card.vis { opacity: 1; transform: translateY(0); }
+.phil-card-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 1.6rem;
+  font-weight: 300;
+  color: var(--sage-light);
+  line-height: 1;
+  margin-bottom: 1rem;
+}
+.phil-card h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.15rem;
+  font-weight: 500;
+  line-height: 1.4;
+  margin-bottom: 0.75rem;
+  color: var(--ink);
+}
+.phil-card p {
+  font-size: 0.83rem;
+  line-height: 1.7;
+  color: var(--ink-soft);
+}
+.phil-card .example {
+  margin-top: 0.9rem;
+  padding-top: 0.9rem;
+  border-top: 1px dashed var(--rule);
+  font-style: italic;
+  font-size: 0.78rem;
+  color: var(--blush);
+  line-height: 1.6;
+}
+
+/* ── SKILLS ── */
+.skills-body {
+  display: grid;
+  grid-template-columns: 160px 1fr;
+  gap: 4rem;
+}
+.skills-cols {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 4rem;
+}
+.skill-group-label {
+  font-size: 0.68rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--sage);
+  margin-bottom: 1.5rem;
+}
+.skill-row {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0.65rem 0;
+  border-bottom: 1px dashed var(--rule);
+  font-size: 0.85rem;
+  color: var(--ink-mid);
+}
+.skill-row:first-of-type { border-top: 1px dashed var(--rule); }
+
+/* ── EXPERIENCE ── */
+.exp-body {
+  display: grid;
+  grid-template-columns: 160px 1fr;
+  gap: 4rem;
+}
+.exp-list {}
+.exp-item {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  gap: 3rem;
+  padding: 3rem 0;
+  border-bottom: 1px dashed var(--rule);
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 0.7s, transform 0.7s;
+}
+.exp-item:first-child { border-top: 1px dashed var(--rule); }
+.exp-item.vis { opacity: 1; transform: translateY(0); }
+.exp-date {
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  color: var(--ink-soft);
+  padding-top: 0.2rem;
+  line-height: 1.8;
+}
+.exp-role {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.4rem;
+  font-weight: 400;
+  margin-bottom: 0.2rem;
+  line-height: 1.2;
+}
+.exp-company {
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--sage);
+  margin-bottom: 1rem;
+}
+.exp-bullets { list-style: none; }
+.exp-bullets li {
+  font-size: 0.85rem;
+  line-height: 1.8;
+  color: var(--ink-mid);
+  padding-left: 1.2rem;
+  position: relative;
+  margin-bottom: 0.25rem;
+}
+.exp-bullets li::before {
+  content: '—';
+  position: absolute; left: 0;
+  color: var(--blush);
+  font-size: 0.75rem;
+}
+.exp-bullets li strong { color: var(--ink); font-weight: 500; }
+
+/* ── CREDS ── */
+.cred-section { background: var(--sage-pale); }
+.cred-body {
+  display: grid;
+  grid-template-columns: 160px 1fr;
+  gap: 4rem;
+}
+.cred-cols {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+}
+.cred-group-label {
+  font-size: 0.68rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--sage);
+  margin-bottom: 1.5rem;
+}
+.cred-item {
+  padding: 1.1rem 0;
+  border-bottom: 1px dashed var(--sage-light);
+}
+.cred-item:first-of-type { border-top: 1px dashed var(--sage-light); }
+.cred-item h4 {
+  font-size: 0.9rem;
+  font-weight: 400;
+  color: var(--ink);
+  margin-bottom: 0.2rem;
+}
+.cred-item span {
+  font-size: 0.75rem;
+  color: var(--ink-soft);
+  letter-spacing: 0.04em;
+}
+
+/* ── CONTACT ── */
+.contact-inner {
+  display: grid;
+  grid-template-columns: 160px 1fr;
+  gap: 4rem;
+}
+.contact-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6rem;
+  align-items: start;
+}
+.contact-intro p {
+  font-size: 1rem;
+  line-height: 1.9;
+  color: var(--ink-mid);
+  margin-top: 1.5rem;
+}
+.contact-links { display: flex; flex-direction: column; gap: 0; margin-top: 0.4rem; }
+.contact-link {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 1.4rem 0;
+  border-bottom: 1px dashed var(--rule);
+  text-decoration: none;
+  color: var(--ink);
+  transition: padding-left 0.25s;
+}
+.contact-link:first-child { border-top: 1px dashed var(--rule); }
+.contact-link:hover { padding-left: 0.5rem; }
+.contact-link-left {}
+.contact-type {
+  font-size: 0.65rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--sage);
+  margin-bottom: 0.2rem;
+}
+.contact-val { font-size: 0.9rem; color: var(--ink-mid); }
+.contact-arrow { color: var(--rule); font-size: 1rem; transition: color 0.2s, transform 0.2s; }
+.contact-link:hover .contact-arrow { color: var(--blush); transform: translateX(4px); }
+
+/* ── FOOTER ── */
+footer {
+  padding: 2.5rem 4rem;
+  display: flex; justify-content: space-between; align-items: center;
+  border-top: 1px dashed var(--rule);
+}
+footer p { font-size: 0.75rem; letter-spacing: 0.08em; color: var(--ink-soft); }
+footer em { font-family: 'Cormorant Garamond', serif; font-style: italic; }
+
+/* ── REVEAL ── */
+.reveal {
+  opacity: 0; transform: translateY(20px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.reveal.vis { opacity: 1; transform: translateY(0); }
+
+/* ── ANIMATIONS ── */
+@keyframes rise {
+  from { opacity: 0; transform: translateY(22px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── WRITING ── */
+.writing-body {
+  display: grid;
+  grid-template-columns: 160px 1fr;
+  gap: 4rem;
+}
+.writing-list { display: flex; flex-direction: column; gap: 0; }
+.writing-item {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 3rem;
+  align-items: start;
+  padding: 2.5rem 0;
+  border-bottom: 1px dashed var(--rule);
+  text-decoration: none;
+  color: inherit;
+  transition: padding-left 0.25s;
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 0.6s, transform 0.6s, padding-left 0.25s;
+}
+.writing-item:first-child { border-top: 1px dashed var(--rule); }
+.writing-item:hover { padding-left: 0.75rem; }
+.writing-tag {
+  display: inline-block;
+  font-size: 0.65rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--sage);
+  margin-bottom: 0.6rem;
+}
+.writing-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.55rem;
+  font-weight: 400;
+  line-height: 1.25;
+  margin-bottom: 0.6rem;
+  color: var(--ink);
+}
+.writing-desc {
+  font-size: 0.85rem;
+  line-height: 1.75;
+  color: var(--ink-soft);
+  max-width: 520px;
+}
+.writing-meta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.6rem;
+  padding-top: 0.3rem;
+  min-width: 90px;
+}
+.writing-date {
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  color: var(--ink-soft);
+  white-space: nowrap;
+}
+.writing-arrow {
+  font-size: 1rem;
+  color: var(--blush-light);
+  transition: color 0.2s, transform 0.2s;
+}
+.writing-item:hover .writing-arrow {
+  color: var(--blush);
+  transform: translateX(3px);
+}
+.writing-item.vis { opacity: 1; transform: translateY(0); }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  nav { padding: 1.5rem 2rem; }
+  nav.stuck { padding: 1rem 2rem; }
+  .nav-links { display: none; }
+  .hero { padding: 0 2rem 5rem; }
+  .hero-name { font-size: 4.5rem; }
+  .hero-bottom { grid-template-columns: 1fr 1fr; }
+  .hero-scroll { display: none; }
+  .section { padding: 5rem 2rem; }
+  .section-head { grid-template-columns: 1fr; gap: 1rem; }
+  .about-body { grid-template-columns: 1fr; gap: 2.5rem; }
+  .about-body .spacer { display: none; }
+  .work-list { grid-template-columns: 1fr; }
+  .work-item { grid-template-columns: 1fr; }
+  .work-stats { flex-direction: row; text-align: left; }
+  .phil-body, .skills-body, .exp-body, .cred-body, .contact-inner { grid-template-columns: 1fr; gap: 2rem; }
+  .phil-grid, .skills-cols { grid-template-columns: 1fr; gap: 2rem; }
+  .cred-cols { grid-template-columns: 1fr; gap: 2rem; }
+  .contact-content { grid-template-columns: 1fr; gap: 3rem; }
+  .writing-body { grid-template-columns: 1fr; gap: 2rem; }
+  .writing-item { grid-template-columns: 1fr; gap: 0.75rem; }
+  .writing-meta { align-items: flex-start; flex-direction: row; gap: 1rem; }
+  .exp-item { grid-template-columns: 1fr; gap: 0.5rem; }
+  footer { padding: 2rem; flex-direction: column; gap: 0.5rem; text-align: center; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="#" class="nav-mark">Shubhangi Shreya</a>
+  <ul class="nav-links">
+    <li><a href="#work">Work</a></li>
+    <li><a href="#philosophy">Philosophy</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#writing">Writing</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="mailto:shubhangishreya12@gmail.com" class="nav-resume">Available for hire</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-ambient"></div>
+  <p class="hero-label">Product &amp; Strategy &nbsp;·&nbsp; 5+ Years</p>
+  <h1 class="hero-name">Shubhangi<em>Shreya.</em></h1>
+  <div class="hero-bottom">
+    <div class="hero-stat">
+      <div class="hero-stat-num">116<sup>%</sup></div>
+      <div class="hero-stat-label">Vendor utilisation↑</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-num">90<sup>%+</sup></div>
+      <div class="hero-stat-label">User adoption</div>
+    </div>
+    <div class="hero-desc">
+      Bridging business strategy with technical execution — from PLM hierarchies to production floors, across supply chain and e-commerce.
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="section" id="about">
+  <div class="section-head reveal">
+    <div class="section-index">i.</div>
+    <h2 class="section-title">The work<br><em>I do.</em></h2>
+  </div>
+  <div class="about-body">
+    <div class="spacer"></div>
+    <div class="about-intro reveal">
+      <p>I'm a <strong>Product &amp; Strategy professional</strong> with 5+ years driving digital transformation at Ralph Lauren and Adaface — specialising in large-scale platform rollouts across supply chain, e-commerce, and retail.</p>
+      <p>I manage <strong>7,000+ product hierarchies</strong> across PLM, SAP, and o9 systems, bridge cross-functional teams of 6+, and own outcomes from requirements through post-launch iteration. Currently exploring <strong>Product Management or Strategy roles</strong> where both vision and detail matter.</p>
+    </div>
+    <div class="about-values reveal">
+      <h3>What I look for</h3>
+      <div class="value-item">
+        <h4>Data-backed decision culture</h4>
+        <p>A place that supports new ideas grounded in evidence, not just hierarchy.</p>
+      </div>
+      <div class="value-item">
+        <h4>Direct access to people</h4>
+        <p>Communication that doesn't bottleneck at titles.</p>
+      </div>
+      <div class="value-item">
+        <h4>Accountability + individuality</h4>
+        <p>A team that celebrates how you got there, not just what got shipped.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WORK -->
+<section class="section" id="work">
+  <div class="section-head reveal">
+    <div class="section-index">ii.</div>
+    <h2 class="section-title">Selected<br><em>work.</em></h2>
+  </div>
+  <div class="work-list">
+    <div class="work-spacer"></div>
+    <div class="work-items">
+
+      <div class="work-item">
+        <div class="work-meta">
+          <div class="work-co">Ralph Lauren &nbsp;·&nbsp; WIP Tracking Workspace</div>
+          <h3 class="work-title">End-to-End Digital Supply Chain Workspace</h3>
+          <p class="work-desc">Mapped the as-is process for 1,300+ suppliers tracked manually in Excel. Designed a digital twin with 7 milestone dates, a traffic-light alert system, and approval workflows — then led solo go-live during Christmas, catching a metadata mismatch that would have pushed 12,000 bad data rows to SAP post QA sign-off.</p>
+          <div class="work-tags">
+            <span class="tag">Process Design</span>
+            <span class="tag">o9</span>
+            <span class="tag">SAP Integration</span>
+            <span class="tag">DITL Testing</span>
+            <span class="tag">Change Management</span>
+          </div>
+        </div>
+        <div class="work-stats">
+          <div>
+            <div class="work-stat-num">90%+</div>
+            <div class="work-stat-label">Adoption</div>
+          </div>
+          <div>
+            <div class="work-stat-num">30%</div>
+            <div class="work-stat-label">Fewer updates</div>
+          </div>
+          <div>
+            <div class="work-stat-num">12K</div>
+            <div class="work-stat-label">Bad rows caught</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="work-item">
+        <div class="work-meta">
+          <div class="work-co">Ralph Lauren &nbsp;·&nbsp; Vendor Strategy</div>
+          <h3 class="work-title">Factory Utilisation &amp; Sourcing Expansion</h3>
+          <p class="work-desc">Discovered that $4M of urgent, high-margin replenishments were flowing through just 12 factories — not because better options didn't exist, but because no one had visibility into them. Mined VMS and PLM data to identify 26 additional BCI-certified factories and built the mill-factory association directly into o9.</p>
+          <div class="work-tags">
+            <span class="tag">VMS / PLM Mining</span>
+            <span class="tag">o9 Config</span>
+            <span class="tag">Sourcing Strategy</span>
+            <span class="tag">Cross-functional</span>
+          </div>
+        </div>
+        <div class="work-stats">
+          <div>
+            <div class="work-stat-num">116%</div>
+            <div class="work-stat-label">Utilisation↑</div>
+          </div>
+          <div>
+            <div class="work-stat-num">26</div>
+            <div class="work-stat-label">New factories</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="work-item">
+        <div class="work-meta">
+          <div class="work-co">Ralph Lauren &nbsp;·&nbsp; Buying / Planning</div>
+          <h3 class="work-title">Inventory Markdown Visibility Dashboard</h3>
+          <p class="work-desc">Researched and built an org-level dashboard giving visibility into excessive inventory against markdowns and write-offs for core products. Scaled data cleansing and pre-processing for demand planning algorithms from 1 category to 3.</p>
+          <div class="work-tags">
+            <span class="tag">Microstrategy</span>
+            <span class="tag">Data Cleansing</span>
+            <span class="tag">Demand Planning</span>
+          </div>
+        </div>
+        <div class="work-stats">
+          <div>
+            <div class="work-stat-num">18%</div>
+            <div class="work-stat-label">GMV improvement</div>
+          </div>
+          <div>
+            <div class="work-stat-num">3×</div>
+            <div class="work-stat-label">Categories scaled</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="work-item">
+        <div class="work-meta">
+          <div class="work-co">Adaface &nbsp;·&nbsp; B2B SaaS</div>
+          <h3 class="work-title">Product Strategy &amp; Growth — Employee #1</h3>
+          <p class="work-desc">Joined as the first hire, supporting the CEO in product strategy and operations. Managed content strategy and SEO with 3 reportees, conducted 8+ product demos converting 3 clients, and implemented 30+ UX/UI improvements.</p>
+          <div class="work-tags">
+            <span class="tag">Product Strategy</span>
+            <span class="tag">SEO</span>
+            <span class="tag">UX / UI</span>
+            <span class="tag">B2B SaaS</span>
+          </div>
+        </div>
+        <div class="work-stats">
+          <div>
+            <div class="work-stat-num">28%</div>
+            <div class="work-stat-label">Traffic MoM↑</div>
+          </div>
+          <div>
+            <div class="work-stat-num">45%</div>
+            <div class="work-stat-label">Domain authority</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- PHILOSOPHY -->
+<section class="section" id="philosophy">
+  <div class="section-head reveal">
+    <div class="section-index">iii.</div>
+    <h2 class="section-title">How I<br><em>think.</em></h2>
+  </div>
+  <div class="phil-body">
+    <div></div>
+    <div class="phil-grid">
+      <div class="phil-card">
+        <div class="phil-card-num">01</div>
+        <h3>Find the gap no one's looking at</h3>
+        <p>The most impactful work is often invisible until someone maps it. I go to where the friction actually lives.</p>
+        <p class="example">26 factories existed in the data. No one had looked. $4M of orders got better margins the next season.</p>
+      </div>
+      <div class="phil-card">
+        <div class="phil-card-num">02</div>
+        <h3>Test beyond QA sign-off</h3>
+        <p>Formal testing catches what the test plan covers. DITL testing catches what the business actually does.</p>
+        <p class="example">12,000 bad data rows headed to SAP — caught after QA signed off. The LLD data-mapping tab is now standard practice.</p>
+      </div>
+      <div class="phil-card">
+        <div class="phil-card-num">03</div>
+        <h3>Reintroduce the right idea at the right time</h3>
+        <p>Good ideas rejected early aren't dead — they're waiting for the right stakeholder or context.</p>
+        <p class="example">Reason code restriction rejected once. Reintroduced under new manager. 30% fewer plan date updates. Adopted by SAP team.</p>
+      </div>
+      <div class="phil-card">
+        <div class="phil-card-num">04</div>
+        <h3>Docs people actually use</h3>
+        <p>A 40-page training manual creates dependency. A well-structured Quick Reference Guide creates autonomy.</p>
+        <p class="example">Queries dropped from 6/day to 1–2/month with a single concise QRG — not a heavy training manual.</p>
+      </div>
+      <div class="phil-card">
+        <div class="phil-card-num">05</div>
+        <h3>Earn the strategy seat</h3>
+        <p>I don't wait for permission to think strategically. Insight + data + cross-functional trust earns the seat.</p>
+        <p class="example">Team started pulling me into Chase Order strategy — not just system change requirement discussions.</p>
+      </div>
+      <div class="phil-card">
+        <div class="phil-card-num">06</div>
+        <h3>Own the outcome, not just the delivery</h3>
+        <p>Shipping is a milestone. Adoption, iteration, and measurable reduction in pain — that's the goal.</p>
+        <p class="example">90%+ adoption and a testing methodology now standardised across all workspace launches.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section class="section" id="skills">
+  <div class="section-head reveal">
+    <div class="section-index">iv.</div>
+    <h2 class="section-title">Tools &amp;<br><em>capabilities.</em></h2>
+  </div>
+  <div class="skills-body">
+    <div></div>
+    <div class="skills-cols reveal">
+      <div>
+        <div class="skill-group-label">Analytics &amp; Data</div>
+        <div class="skill-row">o9 (Functional &amp; Analytics)</div>
+        <div class="skill-row">SQL / Advanced Excel</div>
+        <div class="skill-row">Microstrategy / Tableau</div>
+        <div class="skill-row">Metabase / Power BI</div>
+        <div class="skill-row">VMS / PLM Data Mining</div>
+      </div>
+      <div>
+        <div class="skill-group-label">Product &amp; Design</div>
+        <div class="skill-row">JIRA / Confluence</div>
+        <div class="skill-row">PLM / SAP Systems</div>
+        <div class="skill-row">Figma / Adobe XD</div>
+        <div class="skill-row">Mural / Smartsheet</div>
+        <div class="skill-row">LLD &amp; Requirements Writing</div>
+      </div>
+      <div>
+        <div class="skill-group-label">Certifications</div>
+        <div class="skill-row">IBM AI Product Manager</div>
+        <div class="skill-row">SAFe Agile</div>
+        <div class="skill-row">Wharton Operations Analytics</div>
+        <div class="skill-row">Venture Deals — Techstars</div>
+        <div class="skill-row">PE &amp; VC — Bocconi</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section class="section" id="experience">
+  <div class="section-head reveal">
+    <div class="section-index">v.</div>
+    <h2 class="section-title">Where I've<br><em>worked.</em></h2>
+  </div>
+  <div class="exp-body">
+    <div></div>
+    <div class="exp-list">
+
+      <div class="exp-item">
+        <div class="exp-date">May 2022 — Present<br>Ralph Lauren<br>Mumbai / Remote</div>
+        <div>
+          <div class="exp-role">Associate Manager, Technology &amp; Operations Analyst</div>
+          <div class="exp-company">Supply Demand Transformation</div>
+          <ul class="exp-bullets">
+            <li>Large-scale digital transformation across <strong>Supply Chain Planning, Demand Planning, NPI, and Inventory Management</strong> with 6+ cross-functional teams</li>
+            <li>Shipped &amp; managed SIT, DITL, and UAT testing for <strong>63+ features</strong> across 4 business verticals</li>
+            <li>Increased vendor utilisation by <strong>116%</strong> for high-priority orders (Olympics, Wimbledon)</li>
+            <li>Boosted user adoption by <strong>50%</strong> via usage analysis, UI/UX improvements, and end-user training</li>
+            <li>Data governance for <strong>7,000+ product attribute hierarchies</strong> across PLM, SAP, and o9</li>
+            <li>Primary liaison for <strong>500+ stakeholders</strong> across APAC, EMEA, and NA</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-date">Sep 2021 — May 2022<br>Ralph Lauren</div>
+        <div>
+          <div class="exp-role">Associate Manager, Functional Analyst</div>
+          <div class="exp-company">Product Transformation — Buying / Planning</div>
+          <ul class="exp-bullets">
+            <li>Built org-level visibility dashboard for excessive inventory vs. markdowns and write-offs</li>
+            <li><strong>GMV improved 18%</strong> within first cycle of implementation</li>
+            <li>Scaled data cleansing for demand planning from 1 category to <strong>3</strong></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-date">Mar 2021 — Sep 2021<br>Adaface</div>
+        <div>
+          <div class="exp-role">Entrepreneur in Residence / Chief of Staff</div>
+          <div class="exp-company">Product Strategy / Marketing</div>
+          <ul class="exp-bullets">
+            <li><strong>Employee #1</strong> — supported CEO in product strategy and operations at a B2B SaaS startup</li>
+            <li>Content strategy &amp; SEO with 3 reportees: <strong>+28% organic traffic MoM</strong>, <strong>+45% domain authority</strong></li>
+            <li>8+ product demos converting 3 clients; implemented 30+ UX/UI improvements</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-date">Jan 2020 — Aug 2020<br>ABFRL</div>
+        <div>
+          <div class="exp-role">Trainee — Product Transformation</div>
+          <div class="exp-company">Aditya Birla Fashion &amp; Retail</div>
+          <ul class="exp-bullets">
+            <li>Data dashboards in Power BI — <strong>reduced risk analysis time by 37%</strong></li>
+            <li>Product development &amp; launch strategy for infant wear line, Allen Solly Junior</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- WRITING -->
+<section class="section" id="writing">
+  <div class="section-head reveal">
+    <div class="section-index">vi.</div>
+    <h2 class="section-title">Writing &amp;<br><em>thinking.</em></h2>
+  </div>
+  <div class="writing-body">
+    <div></div>
+    <div class="writing-list">
+
+      <a href="https://www.adaface.com/blog/what-your-candidates-are-thinking/" target="_blank" class="writing-item">
+        <div>
+          <div class="writing-tag">Talent Acquisition &nbsp;·&nbsp; Candidate Experience</div>
+          <div class="writing-title">What Your Candidates Are Thinking (But Won't Tell You)</div>
+          <p class="writing-desc">Interviews are often the only chance to assess cultural fit — yet generic questions and over-rehearsed answers undermine both sides. This piece examines the unspoken expectations candidates bring to the process, and what TA teams can do to close that gap.</p>
+        </div>
+        <div class="writing-meta">
+          <span class="writing-date">Jul 2023</span>
+          <span class="writing-arrow">→</span>
+        </div>
+      </a>
+
+      <a href="https://www.adaface.com/blog/evaluating-application-tracking-systems/" target="_blank" class="writing-item">
+        <div>
+          <div class="writing-tag">HR Tech &nbsp;·&nbsp; Recruiting Operations</div>
+          <div class="writing-title">How to Evaluate an Application Tracking System</div>
+          <p class="writing-desc">Choosing an ATS is like evaluating a candidate — you need clear criteria before you start. A guide to building the right selection committee, identifying decision makers, and assessing vendors against what your recruiting process actually needs.</p>
+        </div>
+        <div class="writing-meta">
+          <span class="writing-date">Feb 2023</span>
+          <span class="writing-arrow">→</span>
+        </div>
+      </a>
+
+      <a href="https://www.adaface.com/blog/why-mbti-test-fails-in-recruitment/" target="_blank" class="writing-item">
+        <div>
+          <div class="writing-tag">HR Psychology &nbsp;·&nbsp; Recruitment</div>
+          <div class="writing-title">Why the Myers-Briggs Test is Totally Meaningless</div>
+          <p class="writing-desc">Two million US adults take the MBTI every year, yet psychologists have repeatedly found it unreliable — with 50% of people getting a different result on a retest. An examination of why this test persists despite the evidence, and what actually works instead.</p>
+        </div>
+        <div class="writing-meta">
+          <span class="writing-date">Nov 2022</span>
+          <span class="writing-arrow">→</span>
+        </div>
+      </a>
+
+      <a href="https://www.adaface.com/blog/sql-developer-salary/" target="_blank" class="writing-item">
+        <div>
+          <div class="writing-tag">Tech Hiring &nbsp;·&nbsp; Data</div>
+          <div class="writing-title">The Ultimate Guide to a SQL Developer Salary</div>
+          <p class="writing-desc">A practical reference for recruiters and hiring managers — breaking down SQL developer compensation by experience level, geography, and specialisation, with context on what the role actually demands and how to screen for it effectively.</p>
+        </div>
+        <div class="writing-meta">
+          <span class="writing-date">Aug 2022</span>
+          <span class="writing-arrow">→</span>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION & CERTS -->
+<section class="section cred-section" id="education">
+  <div class="section-head reveal">
+    <div class="section-index">vii.</div>
+    <h2 class="section-title">Education &amp;<br><em>credentials.</em></h2>
+  </div>
+  <div class="cred-body">
+    <div></div>
+    <div class="cred-cols reveal">
+      <div>
+        <div class="cred-group-label">Education</div>
+        <div class="cred-item">
+          <h4>B.F.Tech — Apparel Production &amp; Management</h4>
+          <span>NIFT Bengaluru &nbsp;·&nbsp; 2016–2020 &nbsp;·&nbsp; 8.88 CGPA (Top 5%)</span>
+        </div>
+        <div class="cred-item">
+          <h4>AIR 14 — NIFT National Entrance Exam</h4>
+          <span>2016 &nbsp;·&nbsp; Top 25 for Apparel Sourcing Week India</span>
+        </div>
+        <div class="cred-item">
+          <h4>ABFRL Stride Internship — Graduation Project</h4>
+          <span>Only 8 selected on campus</span>
+        </div>
+        <div class="cred-item">
+          <h4>Laconia Venture Cooperative Global Fellowship</h4>
+          <span>Selective global program &nbsp;·&nbsp; &lt;10% acceptance rate</span>
+        </div>
+      </div>
+      <div>
+        <div class="cred-group-label">Certifications</div>
+        <div class="cred-item">
+          <h4>IBM AI Product Manager</h4>
+          <span>IBM</span>
+        </div>
+        <div class="cred-item">
+          <h4>Operations &amp; Accounting Analytics</h4>
+          <span>Wharton Online</span>
+        </div>
+        <div class="cred-item">
+          <h4>SAFe (Scaled Agile Framework)</h4>
+          <span>Scaled Agile</span>
+        </div>
+        <div class="cred-item">
+          <h4>Venture Deals</h4>
+          <span>Techstars</span>
+        </div>
+        <div class="cred-item">
+          <h4>Private Equity &amp; Venture Capital</h4>
+          <span>Università Bocconi</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="section" id="contact">
+  <div class="section-head reveal">
+    <div class="section-index">viii.</div>
+    <h2 class="section-title">Let's<br><em>connect.</em></h2>
+  </div>
+  <div class="contact-inner">
+    <div></div>
+    <div class="contact-content reveal">
+      <div class="contact-intro">
+        <p>Currently exploring Product Management or Strategy roles. I'm at my best when I'm closest to the problem — bridging the gap between what the business needs and what the system delivers.</p>
+      </div>
+      <div class="contact-links">
+        <a href="mailto:shubhangishreya12@gmail.com" class="contact-link">
+          <div class="contact-link-left">
+            <div class="contact-type">Email</div>
+            <div class="contact-val">shubhangishreya12@gmail.com</div>
+          </div>
+          <span class="contact-arrow">→</span>
+        </a>
+        <a href="https://linkedin.com/in/shubhangi-s-94560515a" target="_blank" class="contact-link">
+          <div class="contact-link-left">
+            <div class="contact-type">LinkedIn</div>
+            <div class="contact-val">linkedin.com/in/shubhangi-s-94560515a</div>
+          </div>
+          <span class="contact-arrow">→</span>
+        </a>
+        <a href="tel:+918969432348" class="contact-link">
+          <div class="contact-link-left">
+            <div class="contact-type">Phone</div>
+            <div class="contact-val">+91 8969 432 348</div>
+          </div>
+          <span class="contact-arrow">→</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p><em>Shubhangi Shreya</em> &nbsp;·&nbsp; Product &amp; Strategy</p>
+  <p>© 2026 &nbsp;·&nbsp; Open to opportunities</p>
+</footer>
+
+<script>
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => nav.classList.toggle('stuck', window.scrollY > 80));
+
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('vis'); io.unobserve(e.target); } });
+}, { threshold: 0.08, rootMargin: '0px 0px -50px 0px' });
+
+document.querySelectorAll('.reveal, .work-item, .phil-card, .exp-item, .writing-item').forEach(el => io.observe(el));
+</script>
+</body>
+</html>
